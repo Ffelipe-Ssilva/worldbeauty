@@ -1,4 +1,4 @@
-package com.world.beauty.model;
+package com.world.beauty.entity;
 
 import java.sql.Date;
 

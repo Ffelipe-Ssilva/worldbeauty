@@ -1,4 +1,4 @@
-package com.world.beauty.controller;
+package com.world.beauty.resource;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.world.beauty.model.Cliente;
+import com.world.beauty.entity.Cliente;
 import com.world.beauty.repository.ClienteRepository;
 
 @RestController
