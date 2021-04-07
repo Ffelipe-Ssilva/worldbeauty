@@ -9,10 +9,10 @@ import com.world.beauty.entity.Cliente;
 public class ClienteBuilder {
 	private Cliente cliente;
 	public Cliente buildCliente(ClienteDto clienteDto) {
-		return cliente=Cliente.builder()
-				.nome(clienteDto.get)
-				.genero(clienteDto)
-				.dtnasc(clienteDto)
-				.telefone(clienteDto)
+		return Cliente.builder()
+                .nome(clienteDto.get())
+                .genero(clienteDto)
+                .dtnasc(clienteDto)
+                .telefone(clienteDto);
 	}
 }

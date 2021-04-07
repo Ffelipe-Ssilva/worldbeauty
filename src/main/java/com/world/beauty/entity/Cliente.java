@@ -1,6 +1,4 @@
-package com.world.beauty.entity;
-
-import java.sql.Date;
+	package com.world.beauty.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
