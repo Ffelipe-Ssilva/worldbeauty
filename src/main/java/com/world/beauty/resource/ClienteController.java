@@ -37,14 +37,14 @@ public class ClienteController {
 	return clienteRepository.save(cliente);
 	}
 	
-	@DeleteMapping("/deletar")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente delete(@PathVariable Long id){
-	return clienteRepository.deleteCliente(id);
+	@DeleteMapping("/deletar/{id}")
+	public List<Cliente> delete(@PathVariable Long id){
+		clienteRepository.deleteById(id);
+		return clienteRepository.findAlphabetic();
 	}
 	
-	@GetMapping("{genero}")
-	public Collection<Cliente> getClienteByGenero(@PathVariable String genero){
+	@GetMapping("/encontrar/{genero}")
+	public List<Cliente> findbyGenero(@PathVariable String genero){
 		return clienteRepository.findbyGenero(genero);
 	}
 

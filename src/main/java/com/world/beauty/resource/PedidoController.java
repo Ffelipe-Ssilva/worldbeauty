@@ -11,25 +11,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.world.beauty.entity.Servico;
-import com.world.beauty.repository.ServicoRepository;
+import com.world.beauty.entity.Cliente;
+import com.world.beauty.entity.Pedidos;
+import com.world.beauty.repository.PedidoRepository;
 
 @RestController
-@RequestMapping("/servicos")
-public class ServicoController {
+@RequestMapping("/pedido")
+public class PedidoController {
 
 	@Autowired
-	private ServicoRepository servicoRepository;
-
+	private PedidoRepository pedidoRepository;
+	
 	@GetMapping("/todos")
-	public List<Servico> listar() {
-		return servicoRepository.findAlphabetic();
+	public List<Pedidos> listar() {
+		return pedidoRepository.findAlphabetic();
 	}
-
-	@PostMapping("/adicionar")
+	
+	@PostMapping("/marcar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Servico adicionar(@RequestBody Servico servico) {
-		return servicoRepository.save(servico);
+	public Pedidos adicionar(@RequestBody Pedidos pedidos) {
+		return pedidoRepository.save(pedidos);
 	}
-
+	
+	@GetMapping("/popgeral")
+	public List<Pedidos> listarpopgeal() {
+		return pedidoRepository.maiorProcuraGeral();
+	}
 }
