@@ -12,5 +12,4 @@ import com.world.beauty.entity.Servico;
 public interface ServicoRepository extends JpaRepository<Servico, Long>{
 	@Query(value = "SELECT * FROM servico ORDER BY nome", nativeQuery = true)
 	List<Servico> findAlphabetic();
-
 }

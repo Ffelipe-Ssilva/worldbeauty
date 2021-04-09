@@ -9,7 +9,9 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @Entity
@@ -22,6 +24,18 @@ public class Servico {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "servico_id")
 	private Long id;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -44,18 +58,6 @@ public class Servico {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 	@Column(nullable=false)
 	private String nome;

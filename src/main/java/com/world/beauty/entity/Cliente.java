@@ -9,7 +9,9 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @Entity
@@ -17,6 +19,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cliente {
+	
+	public Cliente(Long id, String nome, String telefone, String dtnasc, String genero) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.dtnasc = dtnasc;
+		this.genero = genero;
+	}
 	public Long getId() {
 		return id;
 	}

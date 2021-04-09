@@ -13,7 +13,9 @@ import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @Entity
@@ -21,6 +23,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pedidos {
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Servico getServico() {
+		return servico;
+	}
+	public void setServico(Servico servico) {
+		this.servico = servico;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "pedido_id")
@@ -48,28 +69,11 @@ public class Pedidos {
 			return false;
 		return true;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Long getCliente_id() {
-		return cliente_id;
-	}
-	public void setCliente_id(Long cliente_id) {
-		this.cliente_id = cliente_id;
-	}
-	public Long getServico_id() {
-		return servico_id;
-	}
-	public void setServico_id(Long servico_id) {
-		this.servico_id = servico_id;
-	}
-	/*@OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "cliente_id")*/
-	private Long cliente_id;
-   /* @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "servico_id")*/
-	private Long servico_id;
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "servico_id")
+	private Servico servico;
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.world.beauty.dto.ServicoDto;
 import com.world.beauty.entity.Servico;
 import com.world.beauty.repository.ServicoRepository;
 

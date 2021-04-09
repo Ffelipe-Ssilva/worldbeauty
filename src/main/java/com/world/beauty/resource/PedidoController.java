@@ -30,6 +30,7 @@ public class PedidoController {
 	@PostMapping("/marcar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Pedidos adicionar(@RequestBody Pedidos pedidos) {
+		System.out.println(pedidos.toString());
 		return pedidoRepository.save(pedidos);
 	}
 	
