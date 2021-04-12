@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.world.beauty.entity.Cliente;
 import com.world.beauty.entity.Pedidos;
+import com.world.beauty.entity.Servico;
 import com.world.beauty.repository.PedidoRepository;
+import com.world.beauty.repository.ServicoRepository;
 
 @RestController
 @RequestMapping("/pedido")
@@ -27,11 +29,10 @@ public class PedidoController {
 		return pedidoRepository.findAlphabetic();
 	}
 	
-	@PostMapping("/marcar")
+	@PostMapping("/agendar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Pedidos adicionar(@RequestBody Pedidos pedidos) {
-		System.out.println(pedidos.toString());
-		return pedidoRepository.save(pedidos);
+	public Pedidos agendar(@RequestBody Pedidos pedido) {
+		return pedidoRepository.save(pedido);
 	}
 	
 	@GetMapping("/popgeral")

@@ -12,5 +12,9 @@ import lombok.Data;
 public class ClienteDto {
 	private Long id;
 	private List<Cliente> cliente;
+	public void save(Cliente cliente2) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

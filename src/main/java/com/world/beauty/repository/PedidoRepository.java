@@ -16,4 +16,5 @@ public interface PedidoRepository extends JpaRepository<Pedidos, Long>{
 	
 	@Query(value = "SELECT count(servico.nome) as frequencia, servico.nome FROM pedidos,cliente,servico GROUP BY servico.nome ORDER BY frequencia desc", nativeQuery = true)
 	List<Pedidos> maiorProcuraGeral();
+	
 }

@@ -1,4 +1,4 @@
-	package com.world.beauty.entity;
+package com.world.beauty.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +27,9 @@ public class Cliente {
 		this.telefone = telefone;
 		this.dtnasc = dtnasc;
 		this.genero = genero;
+	}
+	public Cliente() {
+		
 	}
 	public Long getId() {
 		return id;

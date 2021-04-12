@@ -7,12 +7,12 @@ import com.world.beauty.entity.Cliente;
 
 @Service
 public class ClienteBuilder {
-	private Cliente cliente;
+	/*private Cliente cliente;
 	public Cliente buildCliente(ClienteDto clienteDto) {
 		return Cliente.builder()
                 .nome(clienteDto.get())
                 .genero(clienteDto)
                 .dtnasc(clienteDto)
                 .telefone(clienteDto);
-	}
+	}*/
 }
