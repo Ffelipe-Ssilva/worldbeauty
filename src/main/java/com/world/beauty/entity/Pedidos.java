@@ -1,14 +1,20 @@
 package com.world.beauty.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,12 +25,16 @@ import lombok.Setter;
 
 @Data
 @Entity
+@Table(name = "pedidos")
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Pedidos {
 	public Long getId() {
 		return id;
+	}
+	public Pedidos() {
+		
 	}
 	public void setId(Long id) {
 		this.id = id;
@@ -70,10 +80,10 @@ public class Pedidos {
 		return true;
 	}
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinColumn(name = "servico_id")
 	private Servico servico;
 }
