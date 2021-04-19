@@ -66,4 +66,7 @@ public class Servico {
 	}
 	@Column(nullable=false)
 	private String nome;
+	
+	@Column(name = "frequencia")
+	private Long frequencia;
 }

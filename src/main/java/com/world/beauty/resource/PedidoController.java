@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.world.beauty.datahandle.PedidoCliente;
 import com.world.beauty.entity.Cliente;
 import com.world.beauty.entity.Pedidos;
 import com.world.beauty.entity.Servico;
+import com.world.beauty.entity.Transfer;
 import com.world.beauty.repository.ClienteRepository;
 import com.world.beauty.repository.PedidoRepository;
 import com.world.beauty.repository.ServicoRepository;
@@ -34,7 +36,7 @@ public class PedidoController {
 	
 	@GetMapping("/todos")
 	public List<Pedidos> listar() {
-		return pedidoRepository.findAlphabetic();
+		return pedidoRepository.findEach();
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -55,8 +57,28 @@ public class PedidoController {
 		return pedidoRepository.save(pedido);
 	}
 	
-	@GetMapping("/popgeral")
+	/*@GetMapping("/popgeral")
 	public List<Pedidos> listarpopgeal() {
 		return pedidoRepository.maiorProcuraGeral();
+	}*/
+	
+	@GetMapping("/encontrar/{id}")
+	public List<Pedidos> findbyId(@PathVariable Long id) {
+		System.out.println(id);
+		System.out.println(pedidoRepository.findEachCliente(id));
+		return pedidoRepository.findEachCliente(id);
+	}
+	
+	@GetMapping("/populargen/{genero}")
+	public List<Pedidos> findbyGenero(@PathVariable String genero) {
+		System.out.println(genero);
+		System.out.println(pedidoRepository.maiorProcuraGenero(genero));
+		return pedidoRepository.maiorProcuraGenero(genero);
+	}
+	
+	@GetMapping("/popular")
+	public List<Pedidos> findPopular() {
+		System.out.println(pedidoRepository.maiorProcura());
+		return pedidoRepository.maiorProcura();
 	}
 }

@@ -20,7 +20,7 @@ public class BeautyApplication {
 	class DemoCommandLineRunner implements CommandLineRunner {
 		@Autowired
 		private ServicoRepository sr;
-
+//
 		@Override
 		public void run(String... arg) throws Exception {
 
@@ -28,5 +28,4 @@ public class BeautyApplication {
 		}
 
 	}
-
 }
