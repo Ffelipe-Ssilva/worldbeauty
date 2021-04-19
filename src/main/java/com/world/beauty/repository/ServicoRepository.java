@@ -20,7 +20,6 @@ public interface ServicoRepository extends JpaRepository<Servico, Long>{
 	@Query(value = "SELECT count(servico.nome) as frequencia,servico.nome,servico.servico_id FROM servico INNER JOIN pedidos ON pedidos.servico_id = servico.servico_id GROUP BY servico.nome,servico.servico_id ORDER BY frequencia desc", nativeQuery = true)
 	List<Servico> maiorProcura();
 	
-	@Query(value = "SELECT count(servico.nome) as frequencia,servico.nome,servico.servico_id FROM pedidos INNER JOIN cliente ON pedidos.cliente_id = cliente.cliente_id INNER JOIN servico ON pedidos.servico_id = "
-			+ "servico.servico_id WHERE genero=:genero GROUP BY servico.nome,servico.servico_id ORDER BY frequencia desc", nativeQuery = true)
+	@Query(value = "SELECT count(servico.nome) as frequencia,servico.nome,servico.servico_id FROM pedidos INNER JOIN servico ON pedidos.servico_id = servico.servico_id INNER JOIN cliente ON cliente.cliente_id=pedidos.cliente_id WHERE genero=:genero GROUP BY servico.nome,servico.servico_id ORDER BY frequencia desc", nativeQuery = true)
 	List<Servico> maiorProcuraGenero(@Param("genero") String genero);
 }
