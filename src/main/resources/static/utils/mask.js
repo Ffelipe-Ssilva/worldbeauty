@@ -1,4 +1,4 @@
 $(document).ready(function(){
-    $('#data').mask('99/99/9999');
-    $('#telefone').mask('(99) 99999-9999');
+    $('#dtnasc').mask('99/99/9999');
+    $('#tele').mask('(99) 99999-9999');
 });

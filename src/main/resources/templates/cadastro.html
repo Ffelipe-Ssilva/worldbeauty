@@ -6,34 +6,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link th:href="@{/css/main.css}" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <title>World Beauty</title>
+        <title>World Beauty | Cadastro</title>
     </head>
     <body>
         <div class="container-sm">
             <header>
                 <header-component th:href="@{/}" header-text="Cadastro de cliente" />
              </header>
-            <form th:action="@{/clientes/cadastro}" method="POST">
+            <form th:action="@{/cliente/cadastrar}" method="POST">
                 <div class="mb-3">
-                  <label for="nome" class="form-label">Nome</label>
+                  <label for="nome" class="form-label">Nome do cliente</label>
                   <input type="text" class="form-control" id="nome" name="nome" required >
                 </div>
                 <div class="mb-3">
-                    <label for="dtnasc" class="form-label">Dt. Nascimento</label>
-                    <input type="text" class="form-control" id="dtnasc" name="dtnasc" required >
+                    <label for="dataNascimento" class="form-label">Data de nascimento do cliente</label>
+                    <input type="text" class="form-control" id="data" name="dataNascimento" required >
                 </div>
                 <div class="mb-3">
                     <select class="form-select" name="genero" required >
-                        <option disabled selected>Gênero</option>
-                        <option value="m">Masculino</option>
-                        <option value="f">Feminino</option>
+                        <option disabled selected>Gênero do cliente</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="telefone" class="form-label">Telefone</label>
+                    <label for="telefone" class="form-label">Telefone do cliente</label>
                     <input type="text" class="form-control" id="telefone" name="telefone" required >
                 </div>
-                <button type="submit" class="btn btn-primary">Finalizar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
             <footer>
                 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

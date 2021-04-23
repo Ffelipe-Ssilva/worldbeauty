@@ -1,5 +1,5 @@
 :root {
-    --color-background: #9871F5;
+    --color-background: #8B008B;
 }
 
 *{
@@ -8,14 +8,17 @@
     box-sizing: border-box;
 }
 
+
+
 html, body{
+	
+    --color-background: #8B018B;
     height: 100vh;
     width: 100vw;
 
 }
 
 body{
-    /* background-color: var(--color-background); */
     display: flex;
 
 }
