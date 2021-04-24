@@ -1,48 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link th:href="@{/css/main.css}" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <title>World Beauty | Cadastro</title>
-    </head>
-    <body>
-        <div class="container-sm">
-            <header>
-                <header-component th:href="@{/}" header-text="Cadastro de cliente" />
-             </header>
-            <form th:action="@{/cliente/cadastrar}" method="POST">
-                <div class="mb-3">
-                  <label for="nome" class="form-label">Nome do cliente</label>
-                  <input type="text" class="form-control" id="nome" name="nome" required >
-                </div>
-                <div class="mb-3">
-                    <label for="dataNascimento" class="form-label">Data de nascimento do cliente</label>
-                    <input type="text" class="form-control" id="data" name="dataNascimento" required >
-                </div>
-                <div class="mb-3">
-                    <select class="form-select" name="genero" required >
-                        <option disabled selected>Gênero do cliente</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="telefone" class="form-label">Telefone do cliente</label>
-                    <input type="text" class="form-control" id="telefone" name="telefone" required >
-                </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-            </form>
-            <footer>
-                <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-                <script th:src="@{/components/header.js}"></script>
-                <script th:src="@{/utils/mask.js}"></script>
-            </footer>
-        </div>
-    </body>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+<title>Clientes</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container-sm">
+		<header>
+			<header-component th:href="@{/}" header-text="Cadastro de cliente" />
+		</header>
+		<form onsubmit="cadastrar(event)">
+
+			<div class="mb-3">
+				<label for="nome" class="form-label">Nome:</label> <input
+					type="text" class="form-control" id="nome" name="nome" required>
+			</div>
+			<div class="mb-3">
+				<label for="dataNascimento" class="form-label">Data de
+					Nascimento(dd/mm/aaaa):</label> <input type="text" class="form-control"
+					id="dtnasc" name="dtnasc" required>
+			</div>
+			<div class="mb-3">
+				<select class="form-select" name="genero" id="genero" required>
+					<option disabled selected>Gênero:</option>
+					<option value="m">Masculino</option>
+					<option value="f">Feminino</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label for="telefone" class="form-label">Telefone:</label> <input
+					type="text" class="form-control" id="telefone" name="telefone"
+					required>
+			</div>
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+		</form>
+		<footer>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+				crossorigin="anonymous"></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+				crossorigin="anonymous"></script>
+			<script th:src="@{/components/header.js}"></script>
+			<script th:src="@{/utils/mask.js}"></script>
+			<script>
+            function cadastrar(event){
+			event.preventDefault()
+			$.extend({
+			jpost: function inserir(url, body) {
+        		return $.ajax({
+					type: 'POST',
+				    url: 'http://localhost:8080/clientes/cadastro',
+				    data: {nome:document.getElementById("nome").value,dtnasc:document.getElementById("dtnasc").value,genero:document.getElementById("genero").value,telefone:document.getElementById("telefone").value},
+				    success: function(data) { alert('data: ' + data); },
+				    contentType: "application/json",
+				    dataType: 'json'
+				});
+			}
+            </script>
+		</footer>
+	</div>
+</body>
 </html>

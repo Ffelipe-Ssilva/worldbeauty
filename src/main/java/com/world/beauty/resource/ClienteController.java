@@ -31,9 +31,9 @@ public class ClienteController {
 		return clienteRepository.findAlphabetic();
 	}
 
-	@PutMapping("/cadastro")
+	@PostMapping("/cadastro")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente update(@RequestBody Cliente cliente) {
+	public Cliente update(Cliente cliente) {
 		System.out.println(cliente.toString());
 		return clienteRepository.save(cliente);
 	}
