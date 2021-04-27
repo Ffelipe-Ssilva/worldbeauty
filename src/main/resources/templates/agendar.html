@@ -15,18 +15,26 @@
             </header>
             <form th:action="@{/cliente/pedidos?id=}+${id}" method="POST">
                 <div class="mb-3">
-                    <label for="descricao" class="form-label">Descricao: </label>
-                    <input type="text" class="form-control" id="descricao" name="descricao" required >
+                    <label for="descricao" class="form-label">Cliente: </label>
+                    <input type="text" class="form-control" id="cliente_id" name="cliente" required >
                 </div>
                 <div class="mb-3">
-                    <label for="data" class="form-label">Data da compra: </label>
-                    <input type="text" class="form-control" id="data" name="data" required >
-                </div>
-                <div class="mb-3">
-                    <select class="form-select" name="tipo" required >
-                        <option disabled value="" selected>Tipo: </option>
-                        <option value="servico">Serviço</option>
-                        <option value="produto">Produto</option>
+                    <select class="form-select" name="servico_id" required >
+                        <option disabled value="" selected>Serviço</option>
+                        <option value="1">manicure</option>
+                        <option value="2">pedicure</option>
+                        <option value="3">design de sobrancelhas</option>
+                        <option value="4">remoção de rugas</option>
+                        <option value="5">remoção de manchas na pele</option>
+                        <option value="6">aplicação de botox</option>
+                        <option value="7">tratamento para emagrecimento</option>
+                        <option value="8">tratamento para redução de medidas</option>
+                        <option value="9">corte  de  cabelos</option>
+                        <option value="10">pintura de cabelos</option>
+                        <option value="11">modelagem  e  corte  de  barba</option>
+                        <option value="12">tratamento para quedas de cabelo</option>
+                        <option value="13">venda de produtos especializados</option>
+                        
                     </select>
                 </div>
                 <button type="submit" class="btn btn-warning">Cadastrar</button>

@@ -14,13 +14,7 @@
                <header-component th:href="@{/}" header-text="Lista de todos os clientes" />
             </header>
             <form th:action="@{/clientes/todos}" method="GET">
-                <div class="btn btn-secondary btn-lg dropdown-toggle">
-                    <select class="form-select" id="opt" name="opt" th:value="${opt}">
-                        <option id="optTodos" value="todos" >Todos</option>
-                        <option id="optMasculino" value="m">Masculino</option>
-                        <option id="optFeminino" value="f">Feminino</option>
-                    </select>
-                </div>
+                
                 <button type="submit" class="btn btn-danger">Listar</button>
             </form>
             <br />

@@ -24,12 +24,20 @@ public class PathController {
 		return "idadeavg";
 	}
 	
-	@GetMapping(value = "/listarcli")
+	@GetMapping(value = "/listacli")
 	public String listcliente() {
-		return "listarcli";
+		return "listacli";
 	}
 	
+	@GetMapping(value = "/listacligen")
+	public String listclientegen() {
+		return "listacligen";
+	}
 	
+	@GetMapping(value = "/servpopgen")
+	public String servpopgen() {
+		return "servpopgen";
+	}
 	
 	@GetMapping(value = "/servpop")
 	public String servpop() {
