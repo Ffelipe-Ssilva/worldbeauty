@@ -3,8 +3,6 @@ class ListComprasComponent extends HTMLElement {
         super();
         let id = this.getAttribute('pedido-id');
         let descricao = this.getAttribute('pedido-descricao');
-        let data = this.getAttribute('pedido-data');
-        let preco = this.getAttribute('pedido-preco');
         let tipo = this.getAttribute('pedido-tipo');
 
         this.innerHTML = `

@@ -33,34 +33,11 @@ public class Cliente {
 	public Cliente() {
 		
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
+	public Cliente(String nome, String telefone, String dtnasc, String genero) {
+		super();
 		this.nome = nome;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-	public String getDtnasc() {
-		return dtnasc;
-	}
-	public void setDtnasc(String dtnasc) {
 		this.dtnasc = dtnasc;
-	}
-	public String getGenero() {
-		return genero;
-	}
-	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 	@Id
@@ -90,11 +67,12 @@ public class Cliente {
 			return false;
 		return true;
 	}
-	@Column(nullable=false)
+	@Column()
 	private String nome;
+	@Column()
 	private String telefone;
-	@Column(nullable=false)
+	@Column()
 	private String dtnasc;
-	@Column(nullable=false)
+	@Column()
 	private String genero;
 }

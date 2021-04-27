@@ -13,8 +13,8 @@
 html, body{
 	
     --color-background: #8B018B;
-    height: 100vh;
-    width: 100vw;
+    height: 50vh;
+    width: 50vw;
 
 }
 
@@ -30,6 +30,5 @@ body{
 header-component{
     display: flex;
     margin:0 0 1rem 0;
-    justify-content: space-between;
-    align-items: center;
+    
 }

@@ -14,15 +14,36 @@ public class PathController {
 		return "index";
 	}
 	
-	@GetMapping(value = "/cadastro")
+	@GetMapping(value = "/cadastrocli")
 	public String cadastro() {
 		return "cadastro";
 	}
 	
-	@GetMapping(value = "/cadlistcliente")
-	public String cadlistcliente() {
-		return "cadlistcliente";
+	@GetMapping(value = "/mediaidade")
+	public String avgcliente() {
+		return "idadeavg";
 	}
 	
+	@GetMapping(value = "/listarcli")
+	public String listcliente() {
+		return "listarcli";
+	}
+	
+	
+	
+	@GetMapping(value = "/servpop")
+	public String servpop() {
+		return "servpop";
+	}
+	
+	@GetMapping(value = "/editarcli")
+	public String editcli() {
+		return "editarcli";
+	}
+	
+	@GetMapping(value = "/agendar")
+	public String agendar() {
+		return "agendar";
+	}
 }
  

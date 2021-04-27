@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/css/main.css}" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <title>World Beauty | Lista e cadastro dos pedidos do cliente</title>
+    </head>
+    <body>
+        <div class="container-sm">
+            <header>
+               <header-component th:href="@{/cliente/listar}" header-text="Lista e cadastro dos pedidos do cliente" />
+            </header>
+            <form th:action="@{/cliente/pedidos?id=}+${id}" method="POST">
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">Descricao: </label>
+                    <input type="text" class="form-control" id="descricao" name="descricao" required >
+                </div>
+                <div class="mb-3">
+                    <label for="data" class="form-label">Data da compra: </label>
+                    <input type="text" class="form-control" id="data" name="data" required >
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" name="tipo" required >
+                        <option disabled value="" selected>Tipo: </option>
+                        <option value="servico">Serviço</option>
+                        <option value="produto">Produto</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning">Cadastrar</button>
+            </form>
+            <br />
+            <div class="accordion" id="pedidos">
+                <div class="accordion-item" th:each="pedido:${pedidos}">
+                    <list-pedidos-component 
+                        th:pedido-id="${pedido.idPedido}"
+                        th:pedido-descricao="${pedido.descricao}"
+                        th:pedido-data="${pedido.data}"
+                        th:pedido-preco="${pedido.preco}"
+                        th:pedido-tipo="${pedido.tipo}">
+                    </list-pedidos-component>
+                </div>
+            </div>
+            <footer>
+                <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+                <script th:src="@{/components/header.js}"></script>
+                <script th:src="@{/components/list-pedidos.js}"></script>
+                <script th:src="@{/utils/mask.js}"></script>
+                
+                
+
+
+            </footer>
+        </div>
+    </body>
+</html>

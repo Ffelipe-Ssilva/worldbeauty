@@ -18,32 +18,32 @@
 <body>
 	<div class="container-sm">
 		<header>
-			<header-component th:href="@{/}" header-text="Cadastro de cliente" />
+			<header-component header-text="Cadastro de cliente" />
 		</header>
-		<form onsubmit="cadastrar(event)">
+		<form id="cadastroform" method="POST"  action="/clientes/cadastro">
 
-			<div class="mb-3">
+			<div class="form-control form-control-lg">
 				<label for="nome" class="form-label">Nome:</label> <input
 					type="text" class="form-control" id="nome" name="nome" required>
 			</div>
-			<div class="mb-3">
+			<div class="form-control form-control-lg">
 				<label for="dataNascimento" class="form-label">Data de
 					Nascimento(dd/mm/aaaa):</label> <input type="text" class="form-control"
 					id="dtnasc" name="dtnasc" required>
 			</div>
-			<div class="mb-3">
-				<select class="form-select" name="genero" id="genero" required>
+			<div class="form-control form-control-lg">
+				<select class="btn btn-secondary btn-lg dropdown-toggle" name="genero" id="genero" required>
 					<option disabled selected>Gênero:</option>
 					<option value="m">Masculino</option>
 					<option value="f">Feminino</option>
 				</select>
 			</div>
-			<div class="mb-3">
+			<div class="form-control form-control-lg">
 				<label for="telefone" class="form-label">Telefone:</label> <input
 					type="text" class="form-control" id="telefone" name="telefone"
 					required>
 			</div>
-			<button type="submit" class="btn btn-primary">Cadastrar</button>
+			<button type="submit" class="btn btn-danger" >Cadastrar</button>
 		</form>
 		<footer>
 			<script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -60,18 +60,16 @@
 			<script th:src="@{/components/header.js}"></script>
 			<script th:src="@{/utils/mask.js}"></script>
 			<script>
-            function cadastrar(event){
-			event.preventDefault()
-			$.extend({
-			jpost: function inserir(url, body) {
-        		return $.ajax({
-					type: 'POST',
-				    url: 'http://localhost:8080/clientes/cadastro',
-				    data: {nome:document.getElementById("nome").value,dtnasc:document.getElementById("dtnasc").value,genero:document.getElementById("genero").value,telefone:document.getElementById("telefone").value},
-				    success: function(data) { alert('data: ' + data); },
-				    contentType: "application/json",
-				    dataType: 'json'
-				});
+			function cadastrar(e){
+				e.preventDefault();
+			    $.ajax({
+			        url: '/clientes/cadastro',
+			        type: 'POST',
+			        data: $('#cadastroform').serialize(),
+			        success: function(){
+			            alert("worked");
+			        }
+			    });
 			}
             </script>
 		</footer>
