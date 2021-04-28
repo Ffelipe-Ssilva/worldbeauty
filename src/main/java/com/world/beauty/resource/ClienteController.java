@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,14 +42,14 @@ public class ClienteController {
 		return clienteRepository.save(cliente);
 	}
 
-	@DeleteMapping("/deletar/{id}")
+	@DeleteMapping("/deletar/{id}")//
 	public List<Cliente> delete(@PathVariable Long id) {
 		clienteRepository.deleteById(id);
 		return clienteRepository.findAlphabetic();
 	}
 
-	@GetMapping("/encontrar/{genero}")
-	public List<Cliente> findbyGenero(@PathVariable String genero) {
+	@RequestMapping(value="encontrar", method = RequestMethod.GET)
+	public List<Cliente> findbyGenero(@RequestParam("opt") String genero) {
 		return clienteRepository.findbyGenero(genero);
 	}
 	

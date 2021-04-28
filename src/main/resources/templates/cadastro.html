@@ -20,7 +20,7 @@
 		<header>
 			<header-component header-text="Cadastro de cliente" />
 		</header>
-		<form id="cadastroform" method="POST"  action="/clientes/cadastro">
+		<form id="cadastroform" method="POST" action="/clientes/cadastro">
 
 			<div class="form-control form-control-lg">
 				<label for="nome" class="form-label">Nome:</label> <input
@@ -32,7 +32,8 @@
 					id="dtnasc" name="dtnasc" required>
 			</div>
 			<div class="form-control form-control-lg">
-				<select class="btn btn-secondary btn-lg dropdown-toggle" name="genero" id="genero" required>
+				<select class="btn btn-secondary btn-lg dropdown-toggle"
+					name="genero" id="genero" required>
 					<option disabled selected>Gênero:</option>
 					<option value="m">Masculino</option>
 					<option value="f">Feminino</option>
@@ -43,8 +44,11 @@
 					type="text" class="form-control" id="telefone" name="telefone"
 					required>
 			</div>
-			<button type="submit" class="btn btn-danger" >Cadastrar</button>
+			<button type="submit" class="btn btn-danger">Cadastrar</button>
+			
 		</form>
+		
+		
 		<footer>
 			<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -60,16 +64,21 @@
 			<script th:src="@{/components/header.js}"></script>
 			<script th:src="@{/utils/mask.js}"></script>
 			<script>
-			function cadastrar(e){
-				e.preventDefault();
-			    $.ajax({
-			        url: '/clientes/cadastro',
-			        type: 'POST',
-			        data: $('#cadastroform').serialize(),
-			        success: function(){
-			            alert("worked");
-			        }
-			    });
+			$(document).ready(function() {
+				alert("ok");
+				$('#cadastroform').submit(function(e) {
+					alert("ok");
+				 	e.preventDefault();
+	                var formData = $(this).serialize();
+				    $.ajax({
+				       		url: '/clientes/cadastro',
+				       		type: 'POST',
+				       		data: formData,
+				       		success: function(){
+				            alert("worked");
+				        }
+				    });
+				}
 			}
             </script>
 		</footer>
