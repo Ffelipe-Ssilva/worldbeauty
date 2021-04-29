@@ -46,7 +46,7 @@ public class PathController {
 	
 	@GetMapping(value = "/editarcli")
 	public String editcli() {
-		return "editarcli";
+		return "agendar";
 	}
 	
 	@GetMapping(value = "/agendar")

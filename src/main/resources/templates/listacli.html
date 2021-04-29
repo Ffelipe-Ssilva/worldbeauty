@@ -11,21 +11,18 @@
     <body>
         <div class="container-sm">
             <header>
-               <header-component th:href="@{/}" header-text="Lista de todos os clientes" />
+               <header-component th:href="@{/}" header-text="Lista de Clientes" />
             </header>
-            <form th:action="@{/clientes/todos}" method="GET">
-                
-                <button type="submit" class="btn btn-danger">Listar</button>
-            </form>
+           
             <br />
             <div class="accordion" id="clientes">
                 <div class="accordion-item" th:each="cliente:${clientes}">
                     <list-component 
-                        th:user-id="${cliente.id}"
+                        th:delete-id="${cliente.id}"
                         th:user-nome="${cliente.nome}"
                         th:user-genero="${cliente.genero}"
-                        th:user-nascimento="${cliente.dataNascimento}"
-                        th:user-telefone="${cliente.contatos[0].telefone}">
+                        th:user-nascimento="${cliente.dtnasc}"
+                        th:user-telefone="${cliente.telefone}">
                     </list-component>
                 </div>
             </div>
@@ -34,9 +31,7 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
                 <script th:src="@{/components/header.js}"></script>
                 <script th:src="@{/components/trash.js}"></script>
-                <script th:src="@{/components/edit.js}"></script>
                 <script th:src="@{/components/list.js}"></script>
-                <script th:src="@{/components/shop.js}"></script>
                 <script>
                     $( document ).ready(function() {
                         let opt = $("#opt").attr("value")

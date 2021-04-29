@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +24,7 @@ import com.world.beauty.dto.ClienteDto;
 import com.world.beauty.entity.Cliente;
 import com.world.beauty.repository.ClienteRepository;
 
-@RestController
+@Controller
 @RequestMapping("/clientes")
 public class ClienteController {
 
@@ -31,26 +33,31 @@ public class ClienteController {
 	
 //
 	@GetMapping("/todos")
-	public List<Cliente> listar(){
-		return clienteRepository.findAlphabetic();
+	public String listar(Model model){
+		List<Cliente> cliente=clienteRepository.findAlphabetic();
+		model.addAttribute("clientes",cliente);
+		return "listacli";
 	}//
 
 	@PostMapping("/cadastro")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente update( Cliente cliente) {
+	public String update( Cliente cliente) {
 		System.out.println(cliente.toString());
-		return clienteRepository.save(cliente);
+		clienteRepository.save(cliente);
+		return "cadastro";
 	}
 
-	@DeleteMapping("/deletar/{id}")//
-	public List<Cliente> delete(@PathVariable Long id) {
+	@RequestMapping(value="encontrar", method = RequestMethod.DELETE)
+	public String delete(@RequestParam("opt") Long id, Model model)  {
 		clienteRepository.deleteById(id);
 		return clienteRepository.findAlphabetic();
 	}
 
 	@RequestMapping(value="encontrar", method = RequestMethod.GET)
-	public List<Cliente> findbyGenero(@RequestParam("opt") String genero) {
-		return clienteRepository.findbyGenero(genero);
+	public String findByGenero(@RequestParam("opt") String genero, Model model) {
+		List<Cliente> clientes = clienteRepository.findbyGenero(genero);
+		model.addAttribute("clientes", clientes);
+		return "listacligen";
 	}
 	
 	
