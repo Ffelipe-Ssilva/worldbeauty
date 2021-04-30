@@ -46,11 +46,35 @@ public class ClienteController {
 		clienteRepository.save(cliente);
 		return "cadastro";
 	}
+	
+	@PostMapping("/alterar")
+	@ResponseStatus(HttpStatus.CREATED)
+	public String mudar( Cliente cliente,Model model) {
+		
+		clienteRepository.save(cliente);
+		model.addAttribute("clientes",cliente);
+		List<Cliente> clientes=clienteRepository.findAlphabetic();
+		return "listacli";
+	}
+	
+	@RequestMapping(value="editar", method = RequestMethod.GET)
+	public String edit(@RequestParam("id") Long id, Model model) {
+		Optional<Cliente> cliente= clienteRepository.findById(id);
+		if(cliente.get()==null) {
+			return "listacli";
+		}
+		model.addAttribute("cliente",cliente.get());
+		model.addAttribute("editar",true);
+		return "cadastro";
+		
+		
+	}
+	
 
-	@RequestMapping(value="encontrar", method = RequestMethod.DELETE)
-	public String delete(@RequestParam("opt") Long id, Model model)  {
+	@RequestMapping(value="deletar", method = RequestMethod.GET)
+	public String delete(@RequestParam("id") Long id, Model model)  {
 		clienteRepository.deleteById(id);
-		return clienteRepository.findAlphabetic();
+		return "listacli";
 	}
 
 	@RequestMapping(value="encontrar", method = RequestMethod.GET)
@@ -60,7 +84,12 @@ public class ClienteController {
 		return "listacligen";
 	}
 	
-	
+	@GetMapping(value = "/agendar")
+	public String agendar(Model model) {
+		List<Cliente> cliente=clienteRepository.findAlphabetic();
+		model.addAttribute("clientes",cliente);
+		return "agendar";
+	}
 
 	
 }

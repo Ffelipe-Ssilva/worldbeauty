@@ -6,52 +6,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link th:href="@{/css/main.css}" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <title>World Beauty | Relatório de idade</title>
+        <title>Pedidos mais populares
+        </title>
     </head>
     <body>
         <div class="container-sm">
             <header>
-               <header-component th:href="@{/}" header-text="Relatório de vendas por serviço" />
+               <header-component th:href="@{/}" header-text="Pedidos Populares" />
             </header>
-            <main>
-                <form th:action="@{/servicos/popular}" method="GET">
-                    
-                    <button type="submit" class="btn btn-primary">Listar</button>
-                </form>
-                <center>
-                    <div id="grafico" style="width: 80vw;height: 60vh;"></div>
-                </center>
-            </main>
+           
+            <br />
+            <div class="accordion" id="servicos">
+                <div class="accordion-item" th:each="servico:${servicos}">
+                    <list-component 
+                        th:servico-id="${servico.id}"
+                        th:servico-nome="${servico.nome}"
+                        th:servico-frequencia="${servico.frequencia}">
+                    </list-component>
+                </div><br><br>
+                <a th:href="@{/}" class="btn btn-primary">Sair</a>
+            </div>
             <footer>
                 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script th:src="@{/components/header.js}"></script>
-                <script th:inline="javascript">
-                     
-
-                    
-
-                    function drawChart() {
-                        /*<![CDATA[*/
-                            let servicos = /*[[${servicos}]]*/ []
-                        /*]]>*/
-                        console.log(servicos);
-                        var data = new google.visualization.DataTable();
-                        let dataGraph = []
-                        data.addColumn('string', 'Descrição');
-                        data.addColumn('number', 'Número de vendas');
-                        servicos.forEach((s)=>{
-                            console.log(s);
-                            dataGraph.push([s.descricao,s.qtdServicos])
-                        })
-                        data.addRows(dataGraph);
-
-                        var options = {'title':'Quantidade de vendas por serviço'};
-
-                        var chart = new google.visualization.ColumnChart(document.getElementById('grafico'));
-                        chart.draw(data, options);
-                    }
+                <script th:src="@{/components/list-servico.js}"></script>
+                <script>
+                    $( document ).ready(function() {
+                        let opt = $("#opt").attr("value")
+                        switch (opt) {
+                            case "feminino":
+                                $("#optFeminino").attr("selected",true)
+                                break;
+                            case "masculino":
+                                $("#optMasculino").attr("selected",true)
+                                break;
+                        }
+                    });
                 </script>
             </footer>
         </div>

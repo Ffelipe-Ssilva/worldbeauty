@@ -1,7 +1,7 @@
 class ListComponent extends HTMLElement {
     constructor(){
         super();
-        let id =  this.getAttribute('user-id');
+        let id =  this.getAttribute('delete-id');
         let nome =  this.getAttribute('user-nome');
         let genero =  this.getAttribute('user-genero');
         let dataNascimento =  this.getAttribute('user-nascimento');

@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +25,7 @@ import com.world.beauty.repository.ClienteRepository;
 import com.world.beauty.repository.PedidoRepository;
 import com.world.beauty.repository.ServicoRepository;
 
-@RestController
+@Controller
 @RequestMapping("/pedido")
 public class PedidoController {
 
@@ -35,14 +39,17 @@ public class PedidoController {
 	private ClienteRepository clienteRepository;
 	
 	@GetMapping("/todos")
-	public List<Pedidos> listar() {
-		return pedidoRepository.findEach();
+	public String listar(Model model) {
+		
+		List<Pedidos> pedido =pedidoRepository.findEach();
+		model.addAttribute("pedidos",pedido);
+		return "listapedido";
 	}
 	
 	@SuppressWarnings("deprecation")
 	@PostMapping("/agendar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Pedidos agendar(@RequestBody PedidoCliente pedidoCliente) {
+	public String agendar( PedidoCliente pedidoCliente,Model model) {
 		
 		System.out.println(pedidoCliente.getCliente_id());
 		System.out.println(pedidoCliente.getServico_id());
@@ -54,7 +61,10 @@ public class PedidoController {
 		pedido.setServico(servicoRepository.getOne(new Long(pedidoCliente.getServico_id())));
 		System.out.println(servicoRepository.getOne(new Long(pedidoCliente.getServico_id())));
 		System.out.println(pedido);
-		return pedidoRepository.save(pedido);
+		pedidoRepository.save(pedido);
+		List<Cliente> cliente=clienteRepository.findAlphabetic();
+		model.addAttribute("clientes",cliente);
+		return "agendar";
 	}
 	
 	/*@GetMapping("/popgeral")
@@ -62,11 +72,11 @@ public class PedidoController {
 		return pedidoRepository.maiorProcuraGeral();
 	}*/
 	
-	@GetMapping("/encontrar/{id}")
-	public List<Pedidos> findbyId(@PathVariable Long id) {
-		System.out.println(id);
-		System.out.println(pedidoRepository.findEachCliente(id));
-		return pedidoRepository.findEachCliente(id);
+	@RequestMapping(value="encontrar", method = RequestMethod.GET)
+	public String findbyId(@RequestParam("id") Long id,Model model) {
+		List<Pedidos> pedidos= pedidoRepository.findEachCliente(id);
+		model.addAttribute("pedidos",pedidos);
+		return "listapedido";
 	}
 	
 	@GetMapping("/populargen/{genero}")

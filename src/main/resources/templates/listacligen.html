@@ -33,7 +33,8 @@
                         th:user-nascimento="${cliente.dtnasc}"
                         th:user-telefone="${cliente.telefone}">
                     </list-component>
-                </div>
+                </div><br><br>
+                <a th:href="@{/}" class="btn btn-danger">Sair</a>
             </div>
             <footer>
                 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -42,14 +43,10 @@
                 <script th:src="@{/components/trash.js}"></script>
                 <script th:src="@{/components/edit.js}"></script>
                 <script th:src="@{/components/list.js}"></script>
-                <script th:src="@{/components/shop.js}"></script>
                 <script>
                     $( document ).ready(function() {
                         let opt = $("#opt").attr("value")
                         switch (opt) {
-                            case "todos":
-                                $("#optTodos").attr("selected",true)
-                                break;
                             case "feminino":
                                 $("#optFeminino").attr("selected",true)
                                 break;

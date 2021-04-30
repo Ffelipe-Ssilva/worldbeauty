@@ -13,10 +13,12 @@
             <header>
                <header-component th:href="@{/cliente/listar}" header-text="Lista e cadastro dos pedidos do cliente" />
             </header>
-            <form th:action="@{/cliente/pedidos?id=}+${id}" method="POST">
+            <form th:action="@{/pedido/agendar}" method="POST">
                 <div class="mb-3">
                     <label for="descricao" class="form-label">Cliente: </label>
-                    <input type="text" class="form-control" id="cliente_id" name="cliente" required >
+                    <select class="form-select" name="cliente_id" required >
+                        <option th:each="cliente:${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <select class="form-select" name="servico_id" required >

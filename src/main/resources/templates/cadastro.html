@@ -20,7 +20,7 @@
 		<header>
 			<header-component header-text="Cadastro de cliente" />
 		</header>
-		<form id="cadastroform" method="POST" action="/clientes/cadastro">
+		<form id="cadastroform" method="POST" action="/clientes/cadastro" th:if="${editar==false || editar==null} ">
 
 			<div class="form-control form-control-lg">
 				<label for="nome" class="form-label">Nome:</label> <input
@@ -47,6 +47,36 @@
 			<button type="submit" class="btn btn-danger">Cadastrar</button><br><br>
 			<a th:href="@{/}" class="btn btn-danger">Sair</a>
 		</form>
+		
+		<form id="cadastroform" method="POST" action="/clientes/alterar" th:if="${editar==true}">
+<input
+					type="number" th:value="${cliente.id}" class="form-control" id="id" name="id" hidden>
+			<div class="form-control form-control-lg">
+				<label for="nome" class="form-label">Nome:</label> <input
+					type="text" th:value="${cliente.nome}" class="form-control" id="nome" name="nome" required>
+			</div>
+			<div class="form-control form-control-lg">
+				<label for="dataNascimento"  class="form-label">Data de
+					Nascimento(dd/mm/aaaa):</label> <input type="text" th:value="${cliente.dtnasc}"class="form-control"
+					id="dtnasc" name="dtnasc" required>
+			</div>
+			<div class="form-control form-control-lg">
+				<select th:value="${cliente.genero}" class="btn btn-secondary btn-lg dropdown-toggle"
+					name="genero" id="genero" required>
+					<option disabled selected>Gênero:</option>
+					<option value="m">Masculino</option>
+					<option value="f">Feminino</option>
+				</select>
+			</div>
+			<div class="form-control form-control-lg">
+				<label for="telefone" class="form-label">Telefone:</label> <input
+					type="text"th:value="${cliente.telefone}" class="form-control" id="telefone" name="telefone"
+					required>
+			</div>
+			<button type="submit" class="btn btn-danger">Salvar</button><br><br>
+			<a th:href="@{/}" class="btn btn-danger">Sair</a>
+		</form>
+		
 		
 		
 		<footer>

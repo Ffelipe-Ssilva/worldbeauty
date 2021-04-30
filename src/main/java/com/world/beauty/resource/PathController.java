@@ -49,9 +49,6 @@ public class PathController {
 		return "agendar";
 	}
 	
-	@GetMapping(value = "/agendar")
-	public String agendar() {
-		return "agendar";
-	}
+	
 }
  
