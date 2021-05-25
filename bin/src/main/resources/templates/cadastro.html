@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+<title>Clientes</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container-sm">
+		<header>
+			<header-component header-text="Cadastro de cliente" />
+		</header>
+		<form id="cadastroform" method="POST" action="/clientes/cadastro" th:if="${editar==false || editar==null} ">
+
+			<div class="form-control form-control-lg">
+				<label for="nome" class="form-label">Nome:</label> <input
+					type="text" class="form-control" id="nome" name="nome" required>
+			</div>
+			<div class="form-control form-control-lg">
+				<label for="dataNascimento" class="form-label">Data de
+					Nascimento(dd/mm/aaaa):</label> <input type="text" class="form-control"
+					id="dtnasc" name="dtnasc" required>
+			</div>
+			<div class="form-control form-control-lg">
+				<select class="btn btn-secondary btn-lg dropdown-toggle"
+					name="genero" id="genero" required>
+					<option disabled selected>Gênero:</option>
+					<option value="m">Masculino</option>
+					<option value="f">Feminino</option>
+				</select>
+			</div>
+			<div class="form-control form-control-lg">
+				<label for="telefone" class="form-label">Telefone:</label> <input
+					type="text" class="form-control" id="telefone" name="telefone"
+					required>
+			</div>
+			<button type="submit" class="btn btn-danger">Cadastrar</button><br><br>
+			<a th:href="@{/}" class="btn btn-danger">Sair</a>
+		</form>
+		
+		<form id="cadastroform" method="POST" action="/clientes/alterar" th:if="${editar==true}">
+<input
+					type="number" th:value="${cliente.id}" class="form-control" id="id" name="id" hidden>
+			<div class="form-control form-control-lg">
+				<label for="nome" class="form-label">Nome:</label> <input
+					type="text" th:value="${cliente.nome}" class="form-control" id="nome" name="nome" required>
+			</div>
+			<div class="form-control form-control-lg">
+				<label for="dataNascimento"  class="form-label">Data de
+					Nascimento(dd/mm/aaaa):</label> <input type="text" th:value="${cliente.dtnasc}"class="form-control"
+					id="dtnasc" name="dtnasc" required>
+			</div>
+			<div class="form-control form-control-lg">
+				<select th:value="${cliente.genero}" class="btn btn-secondary btn-lg dropdown-toggle"
+					name="genero" id="genero" required>
+					<option disabled selected>Gênero:</option>
+					<option value="m">Masculino</option>
+					<option value="f">Feminino</option>
+				</select>
+			</div>
+			<div class="form-control form-control-lg">
+				<label for="telefone" class="form-label">Telefone:</label> <input
+					type="text"th:value="${cliente.telefone}" class="form-control" id="telefone" name="telefone"
+					required>
+			</div>
+			<button type="submit" class="btn btn-danger">Salvar</button><br><br>
+			<a th:href="@{/}" class="btn btn-danger">Sair</a>
+		</form>
+		
+		
+		
+		<footer>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+				crossorigin="anonymous"></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+				crossorigin="anonymous"></script>
+			<script th:src="@{/components/header.js}"></script>
+			<script th:src="@{/utils/mask.js}"></script>
+			<script>
+			$(document).ready(function() {
+				alert("ok");
+				$('#cadastroform').submit(function(e) {
+					alert("ok");
+				 	e.preventDefault();
+	                var formData = $(this).serialize();
+				    $.ajax({
+				       		url: '/clientes/cadastro',
+				       		type: 'POST',
+				       		data: formData,
+				       		success: function(){
+				            alert("worked");
+				        }
+				    });
+				}
+			}
+            </script>
+		</footer>
+	</div>
+</body>
+</html>

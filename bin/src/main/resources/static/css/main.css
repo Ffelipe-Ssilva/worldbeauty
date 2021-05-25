@@ -1,0 +1,34 @@
+:root {
+    --color-background: #8B008B;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+html, body{
+	
+    --color-background: #8B018B;
+    height: 50vh;
+    width: 50vw;
+
+}
+
+body{
+    display: flex;
+
+}
+
+.container-sm{
+    margin:1rem 0 0 0;
+}
+
+header-component{
+    display: flex;
+    margin:0 0 1rem 0;
+    
+}

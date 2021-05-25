@@ -1,0 +1,13 @@
+INSERT INTO SERVICO(servico_id, nome) VALUES(1, 'manicure');
+INSERT INTO SERVICO(servico_id, nome) VALUES(2, 'pedicure');
+INSERT INTO SERVICO(servico_id, nome) VALUES(3, 'design de sobrancelhas');
+INSERT INTO SERVICO(servico_id, nome) VALUES(4, 'remoção de rugas');
+INSERT INTO SERVICO(servico_id, nome) VALUES(5, 'remoção de manchas na pele');
+INSERT INTO SERVICO(servico_id, nome) VALUES(6, 'aplicação de botox');
+INSERT INTO SERVICO(servico_id, nome) VALUES(7, 'tratamento para emagrecimento');
+INSERT INTO SERVICO(servico_id, nome) VALUES(8, 'tratamento para redução de medidas');
+INSERT INTO SERVICO(servico_id, nome) VALUES(9, 'corte  de  cabelos');
+INSERT INTO SERVICO(servico_id, nome) VALUES(10, 'pintura de cabelos');
+INSERT INTO SERVICO(servico_id, nome) VALUES(11, 'modelagem  e  corte  de  barba');
+INSERT INTO SERVICO(servico_id, nome) VALUES(12, 'tratamento para quedas de cabelo');
+INSERT INTO SERVICO(servico_id, nome) VALUES(13, 'venda de produtos especializados');
