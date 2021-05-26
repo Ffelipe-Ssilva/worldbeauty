@@ -36,18 +36,12 @@ public class ClienteController {
 	@PostMapping("/cadastro")
 	@ResponseStatus(HttpStatus.CREATED)
 	public String update( Cliente cliente) {
-		/*Aqui inicia o processo de cadastro de um cliente*/
 		System.out.println(cliente.toString());
 		clienteRepository.save(cliente);
-		/*Aqui finaliza o processo de cadastro de um cliente*/
 		
-		/*Thread de aviso de cadastro realiado por e-mail*/
-		Carteiro carteiro = new Carteiro(); // -> esta é a classe que contém toda a lógica do envio de e-mail
-		//carteiro.envairEmail();
+		Carteiro carteiro = new Carteiro();
 		
-		Thread processoParalelo = new Thread(carteiro); // -> esta é a classe que vai de fato, des parar o processo em paralelo
-		processoParalelo.start(); // o método start é o que de fato inicia a thread
-		
+		Thread processoParalelo = new Thread(carteiro);
 		
 		return "cadastro";
 	}
