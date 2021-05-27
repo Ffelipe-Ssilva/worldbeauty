@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.world.beauty.entity.Cliente;
 import com.world.beauty.repository.ClienteRepository;
-import com.world.beauty.threads.Alternativo;
 import com.world.beauty.threads.Carteiro;
+import com.world.beauty.threads.Configuracao;
 
 @Controller
 @RequestMapping("/clientes")
@@ -40,11 +40,11 @@ public class ClienteController {
 		System.out.println(cliente.toString());
 		clienteRepository.save(cliente);
 		
-		Carteiro carteiro = new Carteiro();
-		Alternativo alternativo = new Alternativo();
-		Thread processoParalelo = new Thread(carteiro);
-		Thread processoAlternativo = new Thread(alternativo);
-		processoAlternativo.start();
+		Configuracao configuracao = new Configuracao("carteirodeemails@gmail.com", "remetente",
+                "ffelipe.ssilva02@gmail.com", "carteirodeemails@gmail.com", "12QWOP90", "smtp.gmail.com", "465");
+        Carteiro carteiro = new Carteiro(configuracao, "Teste", "Enviando um e-mail de teste...");
+		Thread processoParalelo = new Thread(carteiro.run());
+		processoParalelo.start();
 		
 		return "cadastro";
 	}
