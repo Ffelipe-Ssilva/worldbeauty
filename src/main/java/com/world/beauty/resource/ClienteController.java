@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.world.beauty.entity.Cliente;
 import com.world.beauty.repository.ClienteRepository;
+import com.world.beauty.threads.Alternativo;
 import com.world.beauty.threads.Carteiro;
 
 @Controller
@@ -40,8 +41,10 @@ public class ClienteController {
 		clienteRepository.save(cliente);
 		
 		Carteiro carteiro = new Carteiro();
-		
+		Alternativo alternativo = new Alternativo();
 		Thread processoParalelo = new Thread(carteiro);
+		Thread processoAlternativo = new Thread(alternativo);
+		processoAlternativo.start();
 		
 		return "cadastro";
 	}

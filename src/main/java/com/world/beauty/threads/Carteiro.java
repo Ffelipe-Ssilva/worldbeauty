@@ -10,8 +10,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.Transport;
 
 public class Carteiro implements Runnable {
-	final String senderEmailID = "quick0feet@gamil.com";
-	final String senderPassword = "MutekiShogun!";
+	final String senderEmailID = "carteirodeemails@gmail.com";
+	final String senderPassword = "12QWOP90";
 	final String emailSMTPserver = "smtp.gmail.com";
 	final String emailServerPort = "465";
 	String receiverEmailID = null;
